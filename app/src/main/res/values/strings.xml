@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TradeMe</string>
+    <string name="error_general">Error!</string>
 </resources>
