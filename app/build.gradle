@@ -1,8 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion 26
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "ir.hosseinabbasi.trademe"
         minSdkVersion 14
         targetSdkVersion 26
@@ -20,7 +24,42 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Android Support libs
+    [
+            'design',
+            'support-v4',
+            'appcompat-v7',
+            'recyclerview-v7',
+            'cardview-v7',
+            'support-annotations'
+    ].each {
+        compile "com.android.support:${it}:${supportVersion}"
+    }
+    // network
+    compile "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofit2Version}"
+    // parser
+    compile 'com.google.code.gson:gson:2.8.1'
+    // dependency injection
+    compile 'javax.inject:javax.inject:1'
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    provided "com.google.dagger:dagger-compiler:${daggerVersion}"
+    provided 'javax.annotation:jsr250-api:1.0'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    // reactive
+    compile 'io.reactivex.rxjava2:rxjava:2.1.4'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // logger
+    compile 'com.jakewharton.timber:timber:4.5.1'
+    // ui
+    compile "com.squareup.picasso:picasso:${picassoVersion}"
+    compile "com.jakewharton:butterknife:${butterknifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
