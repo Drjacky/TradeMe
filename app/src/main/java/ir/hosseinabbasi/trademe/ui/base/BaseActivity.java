@@ -114,5 +114,4 @@ public class BaseActivity extends AppCompatActivity implements IBaseView, BaseFr
         }
         super.onDestroy();
     }
-
 }
