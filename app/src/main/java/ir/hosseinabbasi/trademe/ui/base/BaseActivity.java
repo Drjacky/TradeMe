@@ -43,6 +43,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView, BaseFr
                 .applicationComponent(((MyApplication) getApplication()).getApplicationComponent())
                 .build();
 
+        getActivityComponent().inject(this);
         mRealmManager.openLocalInstance();
     }
 

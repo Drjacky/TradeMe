@@ -11,13 +11,15 @@ android {
         applicationId "ir.hosseinabbasi.trademe"
         minSdkVersion 14
         targetSdkVersion 26
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             buildConfigField("String", "BASE_URL", "\"https://api.tmsandbox.co.nz/v1/\"")
@@ -27,6 +29,7 @@ android {
 
         debug {
             minifyEnabled false
+            shrinkResources false
             debuggable true
             applicationIdSuffix ".debug"
             versionNameSuffix "-DEBUG"
@@ -82,6 +85,9 @@ dependencies {
     compile "com.jakewharton:butterknife:${butterknifeVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //other
+    implementation 'com.android.support:multidex:1.0.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

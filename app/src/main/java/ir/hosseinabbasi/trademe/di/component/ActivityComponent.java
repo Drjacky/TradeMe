@@ -3,6 +3,7 @@ package ir.hosseinabbasi.trademe.di.component;
 import dagger.Component;
 import ir.hosseinabbasi.trademe.di.PerActivity;
 import ir.hosseinabbasi.trademe.di.module.ActivityModule;
+import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
 import ir.hosseinabbasi.trademe.ui.splash.SplashActivity;
 
 /**
@@ -12,5 +13,6 @@ import ir.hosseinabbasi.trademe.ui.splash.SplashActivity;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
+    void inject(BaseActivity activity);
     void inject(SplashActivity activity);
 }
