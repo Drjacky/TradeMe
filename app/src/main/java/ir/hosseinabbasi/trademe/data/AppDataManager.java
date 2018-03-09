@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import ir.hosseinabbasi.trademe.data.db.IDbService;
 import ir.hosseinabbasi.trademe.data.network.IApiService;
 import ir.hosseinabbasi.trademe.di.ApplicationContext;
 
@@ -18,11 +19,14 @@ public class AppDataManager implements DataManager {
 
     private final Context mContext;
     private final IApiService mIApiService;
+    private final IDbService mDbService;
 
     @Inject
     public AppDataManager(@ApplicationContext Context context,
-                          IApiService IApiService) {
+                          IApiService IApiService,
+                          IDbService dbService) {
         mContext = context;
         mIApiService = IApiService;
+        mDbService = dbService;
     }
 }
