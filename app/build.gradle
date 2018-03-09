@@ -20,8 +20,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             buildConfigField("String", "BASE_URL", "\"https://api.tmsandbox.co.nz/v1/\"")
-            buildConfigField("String", "CONSUMER_KEY", "A1AC63F0332A131A78FAC304D007E7D1")
-            buildConfigField("String", "CONSUMER_SECRET", "EC7F18B17A062962C6930A8AE88B16C7")
+            buildConfigField("String", "CONSUMER_KEY", "\"A1AC63F0332A131A78FAC304D007E7D1\"")
+            buildConfigField("String", "CONSUMER_SECRET", "\"EC7F18B17A062962C6930A8AE88B16C7\"")
         }
 
         debug {
@@ -31,10 +31,15 @@ android {
             versionNameSuffix "-DEBUG"
 
             buildConfigField("String", "BASE_URL", "\"https://api.tmsandbox.co.nz/v1/\"")
-            buildConfigField("String", "CONSUMER_KEY", "A1AC63F0332A131A78FAC304D007E7D1")
-            buildConfigField("String", "CONSUMER_SECRET", "EC7F18B17A062962C6930A8AE88B16C7")
+            buildConfigField("String", "CONSUMER_KEY", "\"A1AC63F0332A131A78FAC304D007E7D1\"")
+            buildConfigField("String", "CONSUMER_SECRET", "\"EC7F18B17A062962C6930A8AE88B16C7\"")
 
             signingConfig android.signingConfigs.debug
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
         }
     }
 }
