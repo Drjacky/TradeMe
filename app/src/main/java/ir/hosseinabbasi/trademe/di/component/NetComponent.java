@@ -2,7 +2,7 @@ package ir.hosseinabbasi.trademe.di.component;
 
 import javax.inject.Singleton;
 
-import ir.hosseinabbasi.trademe.data.network.ApiService;
+import ir.hosseinabbasi.trademe.data.network.IApiService;
 
 /**
  * Created by Dr.jacky on 2018/03/09.
@@ -11,5 +11,5 @@ import ir.hosseinabbasi.trademe.data.network.ApiService;
 @Singleton
 public interface NetComponent {
     @Singleton
-    ApiService exposeApiService();
+    IApiService exposeApiService();
 }

@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ir.hosseinabbasi.trademe.MyApplication;
 import ir.hosseinabbasi.trademe.data.DataManager;
-import ir.hosseinabbasi.trademe.data.network.ApiService;
+import ir.hosseinabbasi.trademe.data.network.IApiService;
 import ir.hosseinabbasi.trademe.di.ApplicationContext;
 import ir.hosseinabbasi.trademe.di.module.ApplicationModule;
 import ir.hosseinabbasi.trademe.di.module.NetModule;
@@ -33,5 +33,5 @@ public interface ApplicationComponent extends NetComponent{
     DataManager getDataManager();
 
     @Override
-    ApiService exposeApiService();
+    IApiService exposeApiService();
 }
