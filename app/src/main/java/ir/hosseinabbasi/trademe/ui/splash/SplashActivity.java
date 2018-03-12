@@ -1,5 +1,6 @@
 package ir.hosseinabbasi.trademe.ui.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import butterknife.ButterKnife;
 import ir.hosseinabbasi.trademe.R;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
+import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 
 /**
  * Created by Dr.jacky on 2018/03/09.
@@ -44,7 +46,8 @@ public class SplashActivity extends BaseActivity implements ISplashView{
     }
 
     @Override
-    public void loadCategoryList(Root categoryList) {
-
+    public void loadCategoryList(Root categoryList) { //ToDo Remove parameter. Reach the Root via Realm query.
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
