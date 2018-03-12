@@ -4,8 +4,11 @@ import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
 @Generated("com.robohorse.robopojogenerator")
-public class Root{
+public class Root extends RealmObject{
 
 	@SerializedName("Path")
 	private String path;
@@ -14,7 +17,7 @@ public class Root{
 	private boolean isLeaf;
 
 	@SerializedName("Subcategories")
-	private List<SubcategoriesItem> subcategories;
+	private RealmList<SubcategoriesItem> subcategories;
 
 	@SerializedName("Number")
 	private String number;
@@ -38,11 +41,11 @@ public class Root{
 		return isLeaf;
 	}
 
-	public void setSubcategories(List<SubcategoriesItem> subcategories){
+	public void setSubcategories(RealmList<SubcategoriesItem> subcategories){
 		this.subcategories = subcategories;
 	}
 
-	public List<SubcategoriesItem> getSubcategories(){
+	public RealmList<SubcategoriesItem> getSubcategories(){
 		return subcategories;
 	}
 
