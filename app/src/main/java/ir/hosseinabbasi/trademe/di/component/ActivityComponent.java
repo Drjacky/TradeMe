@@ -4,6 +4,7 @@ import dagger.Component;
 import ir.hosseinabbasi.trademe.di.PerActivity;
 import ir.hosseinabbasi.trademe.di.module.ActivityModule;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
+import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 import ir.hosseinabbasi.trademe.ui.splash.SplashActivity;
 
 /**
@@ -15,4 +16,5 @@ import ir.hosseinabbasi.trademe.ui.splash.SplashActivity;
 public interface ActivityComponent {
     void inject(BaseActivity activity);
     void inject(SplashActivity activity);
+    void inject(MainActivity activity);
 }

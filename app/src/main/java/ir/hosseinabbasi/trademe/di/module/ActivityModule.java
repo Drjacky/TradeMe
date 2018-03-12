@@ -8,6 +8,9 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 import ir.hosseinabbasi.trademe.di.ActivityContext;
 import ir.hosseinabbasi.trademe.di.PerActivity;
+import ir.hosseinabbasi.trademe.ui.main.IMainActivityPresenter;
+import ir.hosseinabbasi.trademe.ui.main.IMainActivityView;
+import ir.hosseinabbasi.trademe.ui.main.MainActivityPresenter;
 import ir.hosseinabbasi.trademe.ui.splash.ISplashPresenter;
 import ir.hosseinabbasi.trademe.ui.splash.ISplashView;
 import ir.hosseinabbasi.trademe.ui.splash.SplashPresenter;
@@ -45,6 +48,13 @@ public class ActivityModule {
     @PerActivity
     ISplashPresenter<ISplashView> provideSplashPresenter(SplashPresenter<ISplashView>
                                                                      presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    IMainActivityPresenter<IMainActivityView> provideMainActivityPresenter(MainActivityPresenter<IMainActivityView>
+                                                                 presenter) {
         return presenter;
     }
 }
