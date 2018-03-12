@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import ir.hosseinabbasi.trademe.R;
+import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
 
 /**
@@ -42,4 +43,8 @@ public class SplashActivity extends BaseActivity implements ISplashView{
             Toast.makeText(this, R.string.error_general, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void loadCategoryList(Root categoryList) {
+
+    }
 }

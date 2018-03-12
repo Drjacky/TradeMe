@@ -1,9 +1,11 @@
 package ir.hosseinabbasi.trademe.ui.splash;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
-import io.reactivex.disposables.CompositeDisposable;
 import ir.hosseinabbasi.trademe.data.DataManager;
+import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.ui.base.BasePresenter;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposableFactory;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposables;
@@ -23,15 +25,26 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V>
 
     @Inject
     public SplashPresenter(DataManager dataManager,
-                                 ThreadTransformer threadTransformer,
-                                 RxDisposableFactory rxDisposableFactory) {
+                           ThreadTransformer threadTransformer,
+                           RxDisposableFactory rxDisposableFactory) {
         super(dataManager, threadTransformer, rxDisposableFactory);
         this.threadTransformer = getThreadTransformer();
         this.disposables = getRxDisposables();
     }
 
     @Override
-    public void getCategories() {
-
+    public void getCategories() { //Need to figure out how to update the local category after first time.
+        Root rootLocal = getDataManager().loadCategories();
+        if (rootLocal == null) {
+            disposables.add(getDataManager().getCategories("0", "JSON")
+                    .compose(threadTransformer.applySchedulers())
+                    .subscribe(rootResult -> {
+                        getDataManager().saveCategories(rootResult);
+                        getBaseView().loadCategoryList(rootResult);
+                    }, throwable -> {
+                        Log.wtf(TAG, throwable.getMessage() + "");
+                    }));
+        } else getBaseView().loadCategoryList(rootLocal);
     }
+
 }

@@ -1,5 +1,6 @@
 package ir.hosseinabbasi.trademe.ui.splash;
 
+import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.ui.base.IBaseView;
 
 /**
@@ -7,4 +8,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBaseView;
  */
 
 public interface ISplashView extends IBaseView {
+    void loadCategoryList(Root categoryList);
 }

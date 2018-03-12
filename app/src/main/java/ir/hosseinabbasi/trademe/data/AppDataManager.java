@@ -5,7 +5,9 @@ import android.content.Context;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Observable;
 import ir.hosseinabbasi.trademe.data.db.IDbService;
+import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.network.IApiService;
 import ir.hosseinabbasi.trademe.di.ApplicationContext;
 
@@ -28,5 +30,20 @@ public class AppDataManager implements DataManager {
         mContext = context;
         mIApiService = IApiService;
         mDbService = dbService;
+    }
+
+    @Override
+    public Observable<Root> getCategories(String number, String fileFormat) {
+        return mIApiService.getCategories(number, fileFormat);
+    }
+
+    @Override
+    public Root loadCategories() {
+        return mDbService.loadCategories();
+    }
+
+    @Override
+    public void saveCategories(Root root) {
+        mDbService.saveCategories(root);
     }
 }
