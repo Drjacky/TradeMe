@@ -2,11 +2,15 @@ package ir.hosseinabbasi.trademe.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import io.realm.RealmList;
 import ir.hosseinabbasi.trademe.R;
+import ir.hosseinabbasi.trademe.data.db.model.Root;
+import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
 
 /**
@@ -35,6 +39,8 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     }
 
     private void initViews() {
+        Root rootRealm = mPresenter.getCategories();
+        RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
     }
 
 }

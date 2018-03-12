@@ -3,6 +3,7 @@ package ir.hosseinabbasi.trademe.ui.main;
 import javax.inject.Inject;
 
 import ir.hosseinabbasi.trademe.data.DataManager;
+import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.ui.base.BasePresenter;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposableFactory;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposables;
@@ -13,6 +14,8 @@ import ir.hosseinabbasi.trademe.utils.rx.ThreadTransformer;
  */
 
 public class MainActivityPresenter<V extends IMainActivityView> extends BasePresenter<V> implements IMainActivityPresenter<V> {
+
+    private static final String TAG = MainActivityPresenter.class.getSimpleName();
 
     private final ThreadTransformer threadTransformer;
     private final RxDisposables disposables;
@@ -26,4 +29,8 @@ public class MainActivityPresenter<V extends IMainActivityView> extends BasePres
         this.disposables = getRxDisposables();
     }
 
+    @Override
+    public Root getCategories() {
+        return getDataManager().loadCategories();
+    }
 }
