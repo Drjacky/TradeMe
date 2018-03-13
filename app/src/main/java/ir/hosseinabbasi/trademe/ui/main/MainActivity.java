@@ -2,10 +2,13 @@ package ir.hosseinabbasi.trademe.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
 import ir.hosseinabbasi.trademe.R;
@@ -21,6 +24,9 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
 
     @Inject
     IMainActivityPresenter<IMainActivityView> mPresenter;
+
+    @BindView(R.id.activity_main_RcyCategory)
+    RecyclerView mCategoryRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     private void initViews() {
         Root rootRealm = mPresenter.getCategories();
         RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
+        mCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mCategoryRecyclerView.setAdapter(new CategoryAdapter(this, scList, null));
     }
 
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="subcategoriesItemModel"
+            type="ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/category_list_item_imvSubCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_list_item_txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{subcategoriesItemModel.name}"
+            app:layout_constraintEnd_toEndOf="@+id/category_list_item_imvSubCategory"
+            app:layout_constraintStart_toStartOf="@+id/category_list_item_imvSubCategory"
+            app:layout_constraintTop_toBottomOf="@+id/category_list_item_imvSubCategory" />
+
+        <TextView
+            android:id="@+id/category_list_item_txtListingId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{subcategoriesItemModel.number}"
+            app:layout_constraintEnd_toEndOf="@+id/category_list_item_txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/category_list_item_txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/category_list_item_txtTitle" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
