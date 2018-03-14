@@ -1,10 +1,8 @@
 package ir.hosseinabbasi.trademe.ui.main;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -15,6 +13,8 @@ import ir.hosseinabbasi.trademe.R;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
+import ir.hosseinabbasi.trademe.ui.category.CategoryAdapter;
+import ir.hosseinabbasi.trademe.ui.category.CategoryListView;
 
 /**
  * Created by Dr.jacky on 3/12/2018.
@@ -24,9 +24,6 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
 
     @Inject
     IMainActivityPresenter<IMainActivityView> mPresenter;
-
-    @BindView(R.id.activity_main_RcyCategory)
-    RecyclerView mCategoryRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +42,10 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     }
 
     private void initViews() {
-        Root rootRealm = mPresenter.getCategories();
-        RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
-        mCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        mCategoryRecyclerView.setAdapter(new CategoryAdapter(this, scList, null));
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(), CategoryListView.TAG)
+                .commit();
     }
 
 }

@@ -14,44 +14,46 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/category_list_item_imvSubCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:src="@mipmap/ic_launcher_round"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/category_list_item_txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{subcategoriesItemModel.name}"
-            app:layout_constraintEnd_toEndOf="@+id/category_list_item_imvSubCategory"
-            app:layout_constraintStart_toStartOf="@+id/category_list_item_imvSubCategory"
-            app:layout_constraintTop_toBottomOf="@+id/category_list_item_imvSubCategory" />
 
         <TextView
             android:id="@+id/category_list_item_txtListingId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:text="@{subcategoriesItemModel.number}"
-            app:layout_constraintEnd_toEndOf="@+id/category_list_item_txtTitle"
-            app:layout_constraintStart_toStartOf="@+id/category_list_item_txtTitle"
-            app:layout_constraintTop_toBottomOf="@+id/category_list_item_txtTitle" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_list_item_txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{subcategoriesItemModel.name}"
+            app:layout_constraintBottom_toBottomOf="@+id/category_list_item_txtListingId"
+            app:layout_constraintEnd_toStartOf="@+id/category_list_item_imvArrow"
+            app:layout_constraintStart_toEndOf="@+id/category_list_item_txtListingId"
+            app:layout_constraintTop_toTopOf="@+id/category_list_item_txtListingId" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/category_list_item_imvArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:visibility="@{subcategoriesItemModel.isLeaf ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/category_list_item_txtListingId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/category_list_item_txtListingId"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>

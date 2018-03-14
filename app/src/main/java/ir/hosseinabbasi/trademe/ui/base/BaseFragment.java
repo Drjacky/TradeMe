@@ -88,8 +88,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         mUnBinder = unBinder;
     }
 
-    protected abstract void setUp(View view);
-
     @Override
     public void onDestroy() {
         if (mUnBinder != null) {
