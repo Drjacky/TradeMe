@@ -42,6 +42,8 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
     @BindView(R.id.fragment_category_RcyCategory)
     RecyclerView mCategoryRecyclerView;
 
+    private CategoryAdapter mAdapter;
+
     public static CategoryListView getInstance() {
         return new CategoryListView();
     }
@@ -72,7 +74,16 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
         RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
         mCategoryRecyclerView.setHasFixedSize(true);
         mCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mCategoryRecyclerView.setAdapter(new CategoryAdapter(mContext, scList, null));
+        mAdapter = new CategoryAdapter(mContext, scList, this);
+        mCategoryRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void getSubCategory(String parentNumber) {
+        Root rootRealm = mPresenter.getSubCatAt(parentNumber);
+        if(rootRealm != null) {
+            RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
+            mAdapter.addAll(scList);
+        }
+    }
 }

@@ -62,6 +62,8 @@ dependencies {
     ].each {
         implementation "com.android.support:${it}:${supportVersion}"
     }
+    // database
+    annotationProcessor 'dk.ilios:realmfieldnameshelper:1.1.1'
     // network
     implementation "com.squareup.retrofit2:retrofit:${retrofit2Version}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}"

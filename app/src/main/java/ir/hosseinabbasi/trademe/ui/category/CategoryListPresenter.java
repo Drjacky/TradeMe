@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import ir.hosseinabbasi.trademe.data.DataManager;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
+import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.ui.base.BasePresenter;
 import ir.hosseinabbasi.trademe.ui.main.MainActivityPresenter;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposableFactory;
@@ -33,6 +34,11 @@ public class CategoryListPresenter<V extends ICategoryListView> extends BasePres
     @Override
     public Root getCategories() {
         return getDataManager().loadCategories();
+    }
+
+    @Override
+    public Root getSubCatAt(String parentNumber) {
+        return getDataManager().loadSubCatAt(parentNumber);
     }
 
 }

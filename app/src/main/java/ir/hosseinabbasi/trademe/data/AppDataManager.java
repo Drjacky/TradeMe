@@ -46,4 +46,9 @@ public class AppDataManager implements DataManager {
     public void saveCategories(Root root) {
         mDbService.saveCategories(root);
     }
+
+    @Override
+    public Root loadSubCatAt(String parentNumber) {
+        return mDbService.loadSubCatAt(parentNumber);
+    }
 }

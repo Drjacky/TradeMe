@@ -7,4 +7,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBaseView;
  */
 
 public interface ICategoryListView extends IBaseView{
+    void getSubCategory(String parentNumber);
 }

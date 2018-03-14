@@ -18,4 +18,7 @@ public interface DataManager extends IApiService, IDbService {
 
     @Override
     void saveCategories(Root root);
+
+    @Override
+    Root loadSubCatAt(String parentNumber);
 }

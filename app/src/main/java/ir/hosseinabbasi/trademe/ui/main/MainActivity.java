@@ -1,12 +1,9 @@
 package ir.hosseinabbasi.trademe.ui.main;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.RealmList;
 import ir.hosseinabbasi.trademe.R;
