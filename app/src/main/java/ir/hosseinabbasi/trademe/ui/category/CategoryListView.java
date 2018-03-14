@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,9 +81,9 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
 
     @Override
     public void getSubCategory(String parentNumber) {
-        Root rootRealm = mPresenter.getSubCatAt(parentNumber);
-        if(rootRealm != null) {
-            RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
+        SubcategoriesItem subRealm = mPresenter.getSubCatAt(parentNumber);
+        if(subRealm != null) {
+            RealmList<SubcategoriesItem> scList = subRealm.getSubcategories();
             mAdapter.addAll(scList);
         }
     }

@@ -10,5 +10,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBasepresenter;
 
 public interface ICategoryListPresenter<V extends ICategoryListView> extends IBasepresenter<V> {
     Root getCategories();
-    Root getSubCatAt(String parentNumber);
+    SubcategoriesItem getSubCatAt(String parentNumber);
 }

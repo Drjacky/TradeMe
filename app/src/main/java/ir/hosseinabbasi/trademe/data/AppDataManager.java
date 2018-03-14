@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import io.reactivex.Observable;
 import ir.hosseinabbasi.trademe.data.db.IDbService;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
+import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.data.network.IApiService;
 import ir.hosseinabbasi.trademe.di.ApplicationContext;
 
@@ -48,7 +49,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Root loadSubCatAt(String parentNumber) {
+    public SubcategoriesItem loadSubCatAt(String parentNumber) {
         return mDbService.loadSubCatAt(parentNumber);
     }
 }

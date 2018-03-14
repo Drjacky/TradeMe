@@ -3,6 +3,7 @@ package ir.hosseinabbasi.trademe.data;
 import io.reactivex.Observable;
 import ir.hosseinabbasi.trademe.data.db.IDbService;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
+import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.data.network.IApiService;
 
 /**
@@ -20,5 +21,5 @@ public interface DataManager extends IApiService, IDbService {
     void saveCategories(Root root);
 
     @Override
-    Root loadSubCatAt(String parentNumber);
+    SubcategoriesItem loadSubCatAt(String parentNumber);
 }

@@ -37,7 +37,7 @@ public class CategoryListPresenter<V extends ICategoryListView> extends BasePres
     }
 
     @Override
-    public Root getSubCatAt(String parentNumber) {
+    public SubcategoriesItem getSubCatAt(String parentNumber) {
         return getDataManager().loadSubCatAt(parentNumber);
     }
 

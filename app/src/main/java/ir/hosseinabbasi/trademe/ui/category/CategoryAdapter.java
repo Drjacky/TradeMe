@@ -80,7 +80,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.DataHo
         @Override
         public void onClick(View view) {
             SubcategoriesItem sc = mSubcategoriesItems.get(getAdapterPosition());
-            //mListener.getSubCategory(sc.getNumber());
+            mListener.getSubCategory(sc.getNumber());
         }
 
     }

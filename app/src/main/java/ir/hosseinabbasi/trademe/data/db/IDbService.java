@@ -10,5 +10,5 @@ import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 public interface IDbService {
     Root loadCategories();
     void saveCategories(Root root);
-    Root loadSubCatAt(String parentNumber);
+    SubcategoriesItem loadSubCatAt(String parentNumber);
 }

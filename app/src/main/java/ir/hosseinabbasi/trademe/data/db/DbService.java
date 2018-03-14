@@ -37,9 +37,9 @@ public class DbService implements IDbService {
     }
 
     @Override
-    public Root loadSubCatAt(String parentNumber) {
+    public SubcategoriesItem loadSubCatAt(String parentNumber) {
         Realm realm = mRealmManager.getLocalInstance();
-        return realm.where(Root.class).beginsWith(RootFields.NUMBER, parentNumber).findFirst(); //ToDo
+        return realm.where(SubcategoriesItem.class).beginsWith(SubcategoriesItemFields.NUMBER, parentNumber).findFirst(); //ToDo
     }
 
 }
