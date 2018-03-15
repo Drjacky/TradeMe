@@ -75,8 +75,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.DataHo
         @Override
         public void onClick(View view) {
             SubcategoriesItem sc = mSubcategoriesItems.get(getAdapterPosition());
-            if(!sc.isIsLeaf())
-                mListener.getSubCategory(sc.getNumber());
+            if(!sc.isIsLeaf()) mListener.getSubCategory(sc.getNumber());
+            else mListener.getDetail(sc.getNumber());
         }
 
     }

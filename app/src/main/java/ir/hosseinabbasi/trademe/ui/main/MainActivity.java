@@ -19,6 +19,8 @@ import ir.hosseinabbasi.trademe.ui.category.CategoryListView;
 
 public class MainActivity extends BaseActivity implements IMainActivityView {
 
+    public static final String TAG = MainActivity.class.getSimpleName();
+
     @Inject
     IMainActivityPresenter<IMainActivityView> mPresenter;
 

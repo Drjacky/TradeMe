@@ -32,7 +32,7 @@ import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 
 public class CategoryListView extends BaseFragment implements ICategoryListView {
 
-    public static final String TAG = "CategoryListView";
+    public static final String TAG = CategoryListView.class.getSimpleName();
 
     @Inject
     @ActivityContext
@@ -97,6 +97,15 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
 
     @Override
     public void getSubCategory(String parentNumber) {
+        ((MainActivity)mContext).getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(parentNumber), CategoryListView.TAG)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void getDetail(String parentNumber) {
         ((MainActivity)mContext).getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(parentNumber), CategoryListView.TAG)
