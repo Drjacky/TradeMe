@@ -8,5 +8,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBaseView;
 
 public interface ICategoryListView extends IBaseView{
     void getSubCategory(String parentNumber);
-    void getDetail(String parentNumber); //It was also possible that handle it by just an If condition inside of getSubCategory method.
+    void getDetail(String listingId); //It was also possible that handle it by just an If condition inside of getSubCategory method.
 }

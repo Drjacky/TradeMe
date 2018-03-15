@@ -24,6 +24,7 @@ import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.di.ActivityContext;
 import ir.hosseinabbasi.trademe.ui.base.BaseFragment;
+import ir.hosseinabbasi.trademe.ui.detail.DetailView;
 import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 
 /**
@@ -105,10 +106,10 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
     }
 
     @Override
-    public void getDetail(String parentNumber) {
+    public void getDetail(String listingId) {
         ((MainActivity)mContext).getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(parentNumber), CategoryListView.TAG)
+                .replace(R.id.activity_main_FrmContainer, DetailView.getInstance(listingId), CategoryListView.TAG)
                 .addToBackStack(null)
                 .commit();
     }
