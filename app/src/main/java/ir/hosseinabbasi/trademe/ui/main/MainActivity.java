@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     private void initViews() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(), CategoryListView.TAG)
+                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(""), CategoryListView.TAG)
                 .commit();
     }
 

@@ -24,6 +24,7 @@ import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.di.ActivityContext;
 import ir.hosseinabbasi.trademe.ui.base.BaseFragment;
+import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 
 /**
  * Created by Dr.jacky on 3/14/2018.
@@ -45,8 +46,13 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
 
     private CategoryAdapter mAdapter;
 
-    public static CategoryListView getInstance() {
-        return new CategoryListView();
+    public static CategoryListView getInstance(String parentNumber) {
+        CategoryListView categoryListView = new CategoryListView();
+        Bundle args = new Bundle();
+        args.putString("parentNumber", parentNumber);
+        categoryListView.setArguments(args);
+
+        return categoryListView;
     }
 
     @Override
@@ -55,7 +61,8 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this, view));
         mPresenter.onAttach(this);
-        initViews();
+        String parentNumber = getArguments().getString("parentNumber", "");
+        initViews(parentNumber);
         return view;
     }
 
@@ -70,9 +77,18 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
         super.onDestroyView();
     }
 
-    private void initViews() {
-        Root rootRealm = mPresenter.getCategories();
-        RealmList<SubcategoriesItem> scList = rootRealm.getSubcategories();
+    private void initViews(String parentNumber) {
+        RealmList<SubcategoriesItem> scList = null;
+
+        if(parentNumber.isEmpty()) {
+                Root rootRealm = mPresenter.getCategories();
+                scList = rootRealm.getSubcategories();
+        } else {
+            SubcategoriesItem subRealm = mPresenter.getSubCatAt(parentNumber);
+            if(subRealm != null)
+                scList = subRealm.getSubcategories();
+        }
+
         mCategoryRecyclerView.setHasFixedSize(true);
         mCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mAdapter = new CategoryAdapter(mContext, scList, this);
@@ -81,10 +97,10 @@ public class CategoryListView extends BaseFragment implements ICategoryListView 
 
     @Override
     public void getSubCategory(String parentNumber) {
-        SubcategoriesItem subRealm = mPresenter.getSubCatAt(parentNumber);
-        if(subRealm != null) {
-            RealmList<SubcategoriesItem> scList = subRealm.getSubcategories();
-            mAdapter.addAll(scList);
-        }
+        ((MainActivity)mContext).getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_FrmContainer, CategoryListView.getInstance(parentNumber), CategoryListView.TAG)
+                .addToBackStack(null)
+                .commit();
     }
 }

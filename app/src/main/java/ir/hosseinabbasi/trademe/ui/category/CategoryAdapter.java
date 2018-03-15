@@ -54,11 +54,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.DataHo
         return mSubcategoriesItems.size();
     }
 
-    public void addAll(List<SubcategoriesItem> scList) {
-        mSubcategoriesItems = scList;
-        notifyDataSetChanged();
-    }
-
     class DataHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.category_list_item_cnsMain)
         ConstraintLayout row;
@@ -80,7 +75,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.DataHo
         @Override
         public void onClick(View view) {
             SubcategoriesItem sc = mSubcategoriesItems.get(getAdapterPosition());
-            mListener.getSubCategory(sc.getNumber());
+            if(!sc.isIsLeaf())
+                mListener.getSubCategory(sc.getNumber());
         }
 
     }
