@@ -1,5 +1,6 @@
 package ir.hosseinabbasi.trademe.ui.detail;
 
+import ir.hosseinabbasi.trademe.data.db.model.listing.Listing;
 import ir.hosseinabbasi.trademe.ui.base.IBaseView;
 
 /**
@@ -7,4 +8,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBaseView;
  */
 
 public interface IDetailView extends IBaseView {
+    void loadDetail(Listing detail);
 }

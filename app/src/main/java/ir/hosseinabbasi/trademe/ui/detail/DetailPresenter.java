@@ -1,5 +1,7 @@
 package ir.hosseinabbasi.trademe.ui.detail;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 import ir.hosseinabbasi.trademe.data.DataManager;
@@ -26,5 +28,19 @@ public class DetailPresenter<V extends IDetailView> extends BasePresenter<V> imp
         super(dataManager, threadTransformer, rxDisposableFactory);
         this.threadTransformer = getThreadTransformer();
         this.disposables = getRxDisposables();
+    }
+
+    @Override
+    public void getDetail(String listingId) {
+        getBaseView().showLoading();
+        disposables.add(getDataManager().getDetail(listingId, "JSON")
+                .compose(threadTransformer.applySchedulers())
+                .subscribe(listingResult -> {
+                    getBaseView().hideLoading();
+                    getBaseView().loadDetail(listingResult);
+                }, throwable -> {
+                    Log.wtf(TAG, throwable.getMessage() + "");
+                }));
+
     }
 }

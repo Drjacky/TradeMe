@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import io.realm.RealmList;
 import ir.hosseinabbasi.trademe.R;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
+import ir.hosseinabbasi.trademe.data.db.model.listing.Listing;
 import ir.hosseinabbasi.trademe.di.ActivityContext;
 import ir.hosseinabbasi.trademe.ui.base.BaseFragment;
 
@@ -46,7 +48,7 @@ public class DetailView extends BaseFragment implements IDetailView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this, view));
         mPresenter.onAttach(this);
@@ -67,10 +69,13 @@ public class DetailView extends BaseFragment implements IDetailView {
     }
 
     private void initViews(String listingId) {
-        RealmList<SubcategoriesItem> scList = null;
-
         if(!listingId.isEmpty()) {
-
+            mPresenter.getDetail(listingId);
         }
+    }
+
+    @Override
+    public void loadDetail(Listing detail) {
+        Log.wtf(TAG, detail.getListingId()+"");
     }
 }

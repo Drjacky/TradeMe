@@ -7,4 +7,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBasepresenter;
  */
 
 public interface IDetailPresenter<V extends IDetailView> extends IBasepresenter<V> {
+    void getDetail(String listingId);
 }
