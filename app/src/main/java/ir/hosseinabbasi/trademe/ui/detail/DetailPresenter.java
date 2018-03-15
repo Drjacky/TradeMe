@@ -33,12 +33,13 @@ public class DetailPresenter<V extends IDetailView> extends BasePresenter<V> imp
     @Override
     public void getDetail(String listingId) {
         getBaseView().showLoading();
-        disposables.add(getDataManager().getDetail(listingId, "JSON")
+        disposables.add(getDataManager().getDetail(listingId, "JSON") //Honestly, I'm not sure what's this listingId! This URL doesn't work either: https://api.tmsandbox.co.nz/v1/Listings/1234567890.json
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(listingResult -> {
                     getBaseView().hideLoading();
                     getBaseView().loadDetail(listingResult);
                 }, throwable -> {
+                    getBaseView().hideLoading();
                     Log.wtf(TAG, throwable.getMessage() + "");
                 }));
 
