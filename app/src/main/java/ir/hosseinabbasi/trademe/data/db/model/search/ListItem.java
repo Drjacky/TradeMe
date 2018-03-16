@@ -1,11 +1,15 @@
 package ir.hosseinabbasi.trademe.data.db.model.search;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class ListItem{
+public class ListItem implements Parcelable {
 
 	@SerializedName("Suburb")
 	private String suburb;
@@ -569,60 +573,207 @@ public class ListItem{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"ListItem{" + 
-			"suburb = '" + suburb + '\'' + 
-			",promotionId = '" + promotionId + '\'' + 
-			",shortDescription = '" + shortDescription + '\'' + 
-			",startDate = '" + startDate + '\'' + 
-			",isClassified = '" + isClassified + '\'' + 
-			",listingId = '" + listingId + '\'' + 
-			",wasPrice = '" + wasPrice + '\'' + 
-			",startPrice = '" + startPrice + '\'' + 
-			",isClearance = '" + isClearance + '\'' + 
-			",hasHomePageFeature = '" + hasHomePageFeature + '\'' + 
-			",pictureHref = '" + pictureHref + '\'' + 
-			",additionalData = '" + additionalData + '\'' + 
-			",geographicLocation = '" + geographicLocation + '\'' + 
-			",isFeatured = '" + isFeatured + '\'' + 
-			",subtitle = '" + subtitle + '\'' + 
-			",bidCount = '" + bidCount + '\'' + 
-			",hasPayNow = '" + hasPayNow + '\'' + 
-			",canonicalPath = '" + canonicalPath + '\'' + 
-			",region = '" + region + '\'' + 
-			",hasGallery = '" + hasGallery + '\'' + 
-			",asAt = '" + asAt + '\'' + 
-			",hasReserve = '" + hasReserve + '\'' + 
-			",isOnWatchList = '" + isOnWatchList + '\'' + 
-			",maxBidAmount = '" + maxBidAmount + '\'' + 
-			",hasFreeShipping = '" + hasFreeShipping + '\'' + 
-			",category = '" + category + '\'' + 
-			",isNew = '" + isNew + '\'' + 
-			",hasBuyNow = '" + hasBuyNow + '\'' + 
-			",branding = '" + branding + '\'' + 
-			",variantDefinitionSummary = '" + variantDefinitionSummary + '\'' + 
-			",totalReviewCount = '" + totalReviewCount + '\'' + 
-			",categoryPath = '" + categoryPath + '\'' + 
-			",positiveReviewCount = '" + positiveReviewCount + '\'' + 
-			",remainingGalleryPlusRelists = '" + remainingGalleryPlusRelists + '\'' + 
-			",suburbId = '" + suburbId + '\'' + 
-			",isHighlighted = '" + isHighlighted + '\'' + 
-			",buyNowPrice = '" + buyNowPrice + '\'' + 
-			",title = '" + title + '\'' + 
-			",isBold = '" + isBold + '\'' + 
-			",hasEmbeddedVideo = '" + hasEmbeddedVideo + '\'' + 
-			",endDate = '" + endDate + '\'' + 
-			",isBuyNowOnly = '" + isBuyNowOnly + '\'' + 
-			",percentageOff = '" + percentageOff + '\'' + 
-			",reserveState = '" + reserveState + '\'' + 
-			",noteDate = '" + noteDate + '\'' + 
-			",photoUrls = '" + photoUrls + '\'' + 
-			",isReserveMet = '" + isReserveMet + '\'' + 
-			",isSuperFeatured = '" + isSuperFeatured + '\'' + 
-			",regionId = '" + regionId + '\'' + 
-			",priceDisplay = '" + priceDisplay + '\'' + 
-			",openHomes = '" + openHomes + '\'' + 
-			"}";
+	public String toString(){
+		return
+				"ListItem{" +
+						"suburb = '" + suburb + '\'' +
+						",promotionId = '" + promotionId + '\'' +
+						",shortDescription = '" + shortDescription + '\'' +
+						",startDate = '" + startDate + '\'' +
+						",isClassified = '" + isClassified + '\'' +
+						",listingId = '" + listingId + '\'' +
+						",wasPrice = '" + wasPrice + '\'' +
+						",startPrice = '" + startPrice + '\'' +
+						",isClearance = '" + isClearance + '\'' +
+						",hasHomePageFeature = '" + hasHomePageFeature + '\'' +
+						",pictureHref = '" + pictureHref + '\'' +
+						",additionalData = '" + additionalData + '\'' +
+						",geographicLocation = '" + geographicLocation + '\'' +
+						",isFeatured = '" + isFeatured + '\'' +
+						",subtitle = '" + subtitle + '\'' +
+						",bidCount = '" + bidCount + '\'' +
+						",hasPayNow = '" + hasPayNow + '\'' +
+						",canonicalPath = '" + canonicalPath + '\'' +
+						",region = '" + region + '\'' +
+						",hasGallery = '" + hasGallery + '\'' +
+						",asAt = '" + asAt + '\'' +
+						",hasReserve = '" + hasReserve + '\'' +
+						",isOnWatchList = '" + isOnWatchList + '\'' +
+						",maxBidAmount = '" + maxBidAmount + '\'' +
+						",hasFreeShipping = '" + hasFreeShipping + '\'' +
+						",category = '" + category + '\'' +
+						",isNew = '" + isNew + '\'' +
+						",hasBuyNow = '" + hasBuyNow + '\'' +
+						",branding = '" + branding + '\'' +
+						",variantDefinitionSummary = '" + variantDefinitionSummary + '\'' +
+						",totalReviewCount = '" + totalReviewCount + '\'' +
+						",categoryPath = '" + categoryPath + '\'' +
+						",positiveReviewCount = '" + positiveReviewCount + '\'' +
+						",remainingGalleryPlusRelists = '" + remainingGalleryPlusRelists + '\'' +
+						",suburbId = '" + suburbId + '\'' +
+						",isHighlighted = '" + isHighlighted + '\'' +
+						",buyNowPrice = '" + buyNowPrice + '\'' +
+						",title = '" + title + '\'' +
+						",isBold = '" + isBold + '\'' +
+						",hasEmbeddedVideo = '" + hasEmbeddedVideo + '\'' +
+						",endDate = '" + endDate + '\'' +
+						",isBuyNowOnly = '" + isBuyNowOnly + '\'' +
+						",percentageOff = '" + percentageOff + '\'' +
+						",reserveState = '" + reserveState + '\'' +
+						",noteDate = '" + noteDate + '\'' +
+						",photoUrls = '" + photoUrls + '\'' +
+						",isReserveMet = '" + isReserveMet + '\'' +
+						",isSuperFeatured = '" + isSuperFeatured + '\'' +
+						",regionId = '" + regionId + '\'' +
+						",priceDisplay = '" + priceDisplay + '\'' +
+						",openHomes = '" + openHomes + '\'' +
+						"}";
+	}
+
+	protected ListItem(Parcel in) {
+		suburb = in.readString();
+		promotionId = in.readInt();
+		shortDescription = in.readString();
+		startDate = in.readString();
+		isClassified = in.readByte() != 0x00;
+		listingId = in.readInt();
+		wasPrice = in.readDouble();
+		startPrice = in.readDouble();
+		isClearance = in.readByte() != 0x00;
+		hasHomePageFeature = in.readByte() != 0x00;
+		pictureHref = in.readString();
+		additionalData = (AdditionalData) in.readValue(AdditionalData.class.getClassLoader());
+		geographicLocation = (GeographicLocation) in.readValue(GeographicLocation.class.getClassLoader());
+		isFeatured = in.readByte() != 0x00;
+		subtitle = in.readString();
+		bidCount = in.readInt();
+		hasPayNow = in.readByte() != 0x00;
+		canonicalPath = in.readString();
+		region = in.readString();
+		hasGallery = in.readByte() != 0x00;
+		asAt = in.readString();
+		hasReserve = in.readByte() != 0x00;
+		isOnWatchList = in.readByte() != 0x00;
+		maxBidAmount = in.readDouble();
+		hasFreeShipping = in.readByte() != 0x00;
+		category = in.readString();
+		isNew = in.readByte() != 0x00;
+		hasBuyNow = in.readByte() != 0x00;
+		branding = (Branding) in.readValue(Branding.class.getClassLoader());
+		variantDefinitionSummary = (VariantDefinitionSummary) in.readValue(VariantDefinitionSummary.class.getClassLoader());
+		totalReviewCount = in.readInt();
+		categoryPath = in.readString();
+		positiveReviewCount = in.readInt();
+		remainingGalleryPlusRelists = in.readInt();
+		suburbId = in.readInt();
+		isHighlighted = in.readByte() != 0x00;
+		buyNowPrice = in.readDouble();
+		title = in.readString();
+		isBold = in.readByte() != 0x00;
+		hasEmbeddedVideo = in.readByte() != 0x00;
+		endDate = in.readString();
+		isBuyNowOnly = in.readByte() != 0x00;
+		percentageOff = in.readInt();
+		reserveState = in.readInt();
+		noteDate = in.readString();
+		if (in.readByte() == 0x01) {
+			photoUrls = new ArrayList<String>();
+			in.readList(photoUrls, String.class.getClassLoader());
+		} else {
+			photoUrls = null;
 		}
+		isReserveMet = in.readByte() != 0x00;
+		isSuperFeatured = in.readByte() != 0x00;
+		regionId = in.readInt();
+		priceDisplay = in.readString();
+		if (in.readByte() == 0x01) {
+			openHomes = new ArrayList<OpenHomesItem>();
+			in.readList(openHomes, OpenHomesItem.class.getClassLoader());
+		} else {
+			openHomes = null;
+		}
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(suburb);
+		dest.writeInt(promotionId);
+		dest.writeString(shortDescription);
+		dest.writeString(startDate);
+		dest.writeByte((byte) (isClassified ? 0x01 : 0x00));
+		dest.writeInt(listingId);
+		dest.writeDouble(wasPrice);
+		dest.writeDouble(startPrice);
+		dest.writeByte((byte) (isClearance ? 0x01 : 0x00));
+		dest.writeByte((byte) (hasHomePageFeature ? 0x01 : 0x00));
+		dest.writeString(pictureHref);
+		dest.writeValue(additionalData);
+		dest.writeValue(geographicLocation);
+		dest.writeByte((byte) (isFeatured ? 0x01 : 0x00));
+		dest.writeString(subtitle);
+		dest.writeInt(bidCount);
+		dest.writeByte((byte) (hasPayNow ? 0x01 : 0x00));
+		dest.writeString(canonicalPath);
+		dest.writeString(region);
+		dest.writeByte((byte) (hasGallery ? 0x01 : 0x00));
+		dest.writeString(asAt);
+		dest.writeByte((byte) (hasReserve ? 0x01 : 0x00));
+		dest.writeByte((byte) (isOnWatchList ? 0x01 : 0x00));
+		dest.writeDouble(maxBidAmount);
+		dest.writeByte((byte) (hasFreeShipping ? 0x01 : 0x00));
+		dest.writeString(category);
+		dest.writeByte((byte) (isNew ? 0x01 : 0x00));
+		dest.writeByte((byte) (hasBuyNow ? 0x01 : 0x00));
+		dest.writeValue(branding);
+		dest.writeValue(variantDefinitionSummary);
+		dest.writeInt(totalReviewCount);
+		dest.writeString(categoryPath);
+		dest.writeInt(positiveReviewCount);
+		dest.writeInt(remainingGalleryPlusRelists);
+		dest.writeInt(suburbId);
+		dest.writeByte((byte) (isHighlighted ? 0x01 : 0x00));
+		dest.writeDouble(buyNowPrice);
+		dest.writeString(title);
+		dest.writeByte((byte) (isBold ? 0x01 : 0x00));
+		dest.writeByte((byte) (hasEmbeddedVideo ? 0x01 : 0x00));
+		dest.writeString(endDate);
+		dest.writeByte((byte) (isBuyNowOnly ? 0x01 : 0x00));
+		dest.writeInt(percentageOff);
+		dest.writeInt(reserveState);
+		dest.writeString(noteDate);
+		if (photoUrls == null) {
+			dest.writeByte((byte) (0x00));
+		} else {
+			dest.writeByte((byte) (0x01));
+			dest.writeList(photoUrls);
+		}
+		dest.writeByte((byte) (isReserveMet ? 0x01 : 0x00));
+		dest.writeByte((byte) (isSuperFeatured ? 0x01 : 0x00));
+		dest.writeInt(regionId);
+		dest.writeString(priceDisplay);
+		if (openHomes == null) {
+			dest.writeByte((byte) (0x00));
+		} else {
+			dest.writeByte((byte) (0x01));
+			dest.writeList(openHomes);
+		}
+	}
+
+	@SuppressWarnings("unused")
+	public static final Parcelable.Creator<ListItem> CREATOR = new Parcelable.Creator<ListItem>() {
+		@Override
+		public ListItem createFromParcel(Parcel in) {
+			return new ListItem(in);
+		}
+
+		@Override
+		public ListItem[] newArray(int size) {
+			return new ListItem[size];
+		}
+	};
 }
