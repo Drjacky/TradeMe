@@ -1,5 +1,6 @@
 package ir.hosseinabbasi.trademe.data.db.model.search;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
@@ -53,7 +54,7 @@ public class Search{
 	private String searchQueryId;
 
 	@SerializedName("List")
-	private List<ListItem> list;
+	private ArrayList<ListItem> list;
 
 	@SerializedName("SortOrders")
 	private List<SortOrdersItem> sortOrders;
@@ -181,11 +182,11 @@ public class Search{
 		return searchQueryId;
 	}
 
-	public void setList(List<ListItem> list){
+	public void setList(ArrayList<ListItem> list){
 		this.list = list;
 	}
 
-	public List<ListItem> getList(){
+	public ArrayList<ListItem> getList(){
 		return list;
 	}
 
