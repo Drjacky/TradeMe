@@ -5,6 +5,7 @@ import java.util.Map;
 import io.reactivex.Observable;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.listing.Listing;
+import ir.hosseinabbasi.trademe.data.db.model.search.Search;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
@@ -19,4 +20,7 @@ public interface IApiService {
 
     @GET("Listings/{listingId}.{file_format}")
     Observable<Listing> getDetail(@Path("listingId") String listingId, @Path("file_format") String fileFormat);
+
+    @GET("Search/General.{file_format}")
+    Observable<Search> getSearchResult(@Path("file_format") String fileFormat, @QueryMap Map<String, String> params);
 }

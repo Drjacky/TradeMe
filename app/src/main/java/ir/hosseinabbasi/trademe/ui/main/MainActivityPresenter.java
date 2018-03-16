@@ -1,9 +1,15 @@
 package ir.hosseinabbasi.trademe.ui.main;
 
+import android.util.Log;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import ir.hosseinabbasi.trademe.data.DataManager;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
+import ir.hosseinabbasi.trademe.data.db.model.search.Search;
 import ir.hosseinabbasi.trademe.ui.base.BasePresenter;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposableFactory;
 import ir.hosseinabbasi.trademe.utils.rx.RxDisposables;
@@ -32,5 +38,22 @@ public class MainActivityPresenter<V extends IMainActivityView> extends BasePres
     @Override
     public Root getCategories() {
         return getDataManager().loadCategories();
+    }
+
+    @Override
+    public void getSearchResult(String query) {
+        getBaseView().showLoading();
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("search_string", query);
+        disposables.add(getDataManager().getSearchResult("JSON", params)
+                .compose(threadTransformer.applySchedulers())
+                .subscribe(searchResult -> {
+                    getBaseView().hideLoading();
+                    getBaseView().loadSearchResult(searchResult);
+                }, throwable -> {
+                    getBaseView().hideLoading();
+                    getBaseView().onError(throwable.getMessage());
+                    Log.wtf(TAG, throwable.getMessage() + "");
+                }));
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TradeMe</string>
     <string name="error_general">Error!</string>
+    <string name="search">Search Trade Me</string>
 </resources>

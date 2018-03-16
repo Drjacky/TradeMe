@@ -1,5 +1,6 @@
 package ir.hosseinabbasi.trademe.ui.main;
 
+import ir.hosseinabbasi.trademe.data.db.model.search.Search;
 import ir.hosseinabbasi.trademe.ui.base.IBaseView;
 
 /**
@@ -7,4 +8,5 @@ import ir.hosseinabbasi.trademe.ui.base.IBaseView;
  */
 
 public interface IMainActivityView extends IBaseView{
+    void loadSearchResult(Search result);
 }

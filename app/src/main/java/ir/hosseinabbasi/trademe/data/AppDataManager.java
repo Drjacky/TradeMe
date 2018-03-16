@@ -12,6 +12,7 @@ import ir.hosseinabbasi.trademe.data.db.IDbService;
 import ir.hosseinabbasi.trademe.data.db.model.Root;
 import ir.hosseinabbasi.trademe.data.db.model.SubcategoriesItem;
 import ir.hosseinabbasi.trademe.data.db.model.listing.Listing;
+import ir.hosseinabbasi.trademe.data.db.model.search.Search;
 import ir.hosseinabbasi.trademe.data.network.IApiService;
 import ir.hosseinabbasi.trademe.di.ApplicationContext;
 
@@ -44,6 +45,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<Listing> getDetail(String listingId, String fileFormat) {
         return mIApiService.getDetail(listingId, fileFormat);
+    }
+
+    @Override
+    public Observable<Search> getSearchResult(String fileFormat, Map<String, String> params) {
+        return mIApiService.getSearchResult(fileFormat, params);
     }
 
     @Override
