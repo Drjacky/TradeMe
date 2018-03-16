@@ -40,7 +40,7 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V>
         Root rootLocal = getDataManager().loadCategories();
         if (rootLocal == null) {
             Map<String, String> params = new HashMap<String, String>();
-            params.put("with_counts", "true");
+            params.put("with_counts", "false");
             disposables.add(getDataManager().getCategories("0", "JSON", params)
                     .compose(threadTransformer.applySchedulers())
                     .subscribe(rootResult -> {

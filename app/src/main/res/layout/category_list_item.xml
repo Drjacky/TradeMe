@@ -64,6 +64,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             android:text="@{Integer.toString(subcategoriesItemModel.count)}"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/category_list_item_txtListingId"
             app:layout_constraintEnd_toStartOf="@+id/category_list_item_imvArrow"
             app:layout_constraintStart_toEndOf="@+id/category_list_item_txtTitle"
