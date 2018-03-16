@@ -7,6 +7,7 @@ import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
 import ir.hosseinabbasi.trademe.ui.category.CategoryListView;
 import ir.hosseinabbasi.trademe.ui.detail.DetailView;
 import ir.hosseinabbasi.trademe.ui.main.MainActivity;
+import ir.hosseinabbasi.trademe.ui.search.SearchResultView;
 import ir.hosseinabbasi.trademe.ui.splash.SplashActivity;
 
 /**
@@ -21,4 +22,5 @@ public interface ActivityComponent {
     void inject(MainActivity activity);
     void inject(CategoryListView fragment);
     void inject(DetailView fragment);
+    void inject(SearchResultView fragment);
 }

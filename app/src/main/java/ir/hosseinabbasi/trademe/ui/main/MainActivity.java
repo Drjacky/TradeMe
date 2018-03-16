@@ -7,13 +7,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import ir.hosseinabbasi.trademe.R;
+import ir.hosseinabbasi.trademe.data.db.model.search.ListItem;
 import ir.hosseinabbasi.trademe.data.db.model.search.Search;
 import ir.hosseinabbasi.trademe.ui.base.BaseActivity;
 import ir.hosseinabbasi.trademe.ui.category.CategoryListView;
+import ir.hosseinabbasi.trademe.ui.search.SearchResultView;
 
 /**
  * Created by Dr.jacky on 3/12/2018.
@@ -74,6 +78,11 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
 
     @Override
     public void loadSearchResult(Search result) {
-        Log.wtf("loadSearchResult", result.toString());
+        ArrayList<ListItem> listItems = result.getList();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_FrmContainer, SearchResultView.getInstance(listItems), SearchResultView.TAG)
+                .addToBackStack(null)
+                .commit();
     }
 }
