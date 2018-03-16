@@ -1,10 +1,13 @@
 package ir.hosseinabbasi.trademe.data.db.model.search;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Branding{
+public class Branding implements Parcelable {
 
 	@SerializedName("LargeSquareLogo")
 	private String largeSquareLogo;
@@ -95,17 +98,58 @@ public class Branding{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"Branding{" + 
-			"largeSquareLogo = '" + largeSquareLogo + '\'' + 
-			",strokeColor = '" + strokeColor + '\'' + 
-			",officeLocation = '" + officeLocation + '\'' + 
-			",textColor = '" + textColor + '\'' + 
-			",largeBannerURL = '" + largeBannerURL + '\'' + 
-			",largeWideLogo = '" + largeWideLogo + '\'' + 
-			",backgroundColor = '" + backgroundColor + '\'' + 
-			",disableBanner = '" + disableBanner + '\'' + 
-			"}";
+	public String toString(){
+		return
+				"Branding{" +
+						"largeSquareLogo = '" + largeSquareLogo + '\'' +
+						",strokeColor = '" + strokeColor + '\'' +
+						",officeLocation = '" + officeLocation + '\'' +
+						",textColor = '" + textColor + '\'' +
+						",largeBannerURL = '" + largeBannerURL + '\'' +
+						",largeWideLogo = '" + largeWideLogo + '\'' +
+						",backgroundColor = '" + backgroundColor + '\'' +
+						",disableBanner = '" + disableBanner + '\'' +
+						"}";
+	}
+
+	protected Branding(Parcel in) {
+		largeSquareLogo = in.readString();
+		strokeColor = in.readString();
+		officeLocation = in.readString();
+		textColor = in.readString();
+		largeBannerURL = in.readString();
+		largeWideLogo = in.readString();
+		backgroundColor = in.readString();
+		disableBanner = in.readByte() != 0x00;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(largeSquareLogo);
+		dest.writeString(strokeColor);
+		dest.writeString(officeLocation);
+		dest.writeString(textColor);
+		dest.writeString(largeBannerURL);
+		dest.writeString(largeWideLogo);
+		dest.writeString(backgroundColor);
+		dest.writeByte((byte) (disableBanner ? 0x01 : 0x00));
+	}
+
+	@SuppressWarnings("unused")
+	public static final Parcelable.Creator<Branding> CREATOR = new Parcelable.Creator<Branding>() {
+		@Override
+		public Branding createFromParcel(Parcel in) {
+			return new Branding(in);
 		}
+
+		@Override
+		public Branding[] newArray(int size) {
+			return new Branding[size];
+		}
+	};
 }

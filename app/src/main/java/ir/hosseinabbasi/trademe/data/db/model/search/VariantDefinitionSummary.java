@@ -1,10 +1,13 @@
 package ir.hosseinabbasi.trademe.data.db.model.search;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class VariantDefinitionSummary{
+public class VariantDefinitionSummary implements Parcelable {
 
 	@SerializedName("HasDiscountPercentRange")
 	private boolean hasDiscountPercentRange;
@@ -117,19 +120,64 @@ public class VariantDefinitionSummary{
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"VariantDefinitionSummary{" + 
-			"hasDiscountPercentRange = '" + hasDiscountPercentRange + '\'' + 
-			",allDiscounted = '" + allDiscounted + '\'' + 
-			",priceHigh = '" + priceHigh + '\'' + 
-			",price = '" + price + '\'' + 
-			",priceLow = '" + priceLow + '\'' + 
-			",discountPercentLow = '" + discountPercentLow + '\'' + 
-			",discountPercent = '" + discountPercent + '\'' + 
-			",allOnClearance = '" + allOnClearance + '\'' + 
-			",hasPriceRange = '" + hasPriceRange + '\'' + 
-			",discountPercentHigh = '" + discountPercentHigh + '\'' + 
-			"}";
+	public String toString(){
+		return
+				"VariantDefinitionSummary{" +
+						"hasDiscountPercentRange = '" + hasDiscountPercentRange + '\'' +
+						",allDiscounted = '" + allDiscounted + '\'' +
+						",priceHigh = '" + priceHigh + '\'' +
+						",price = '" + price + '\'' +
+						",priceLow = '" + priceLow + '\'' +
+						",discountPercentLow = '" + discountPercentLow + '\'' +
+						",discountPercent = '" + discountPercent + '\'' +
+						",allOnClearance = '" + allOnClearance + '\'' +
+						",hasPriceRange = '" + hasPriceRange + '\'' +
+						",discountPercentHigh = '" + discountPercentHigh + '\'' +
+						"}";
+	}
+
+	protected VariantDefinitionSummary(Parcel in) {
+		hasDiscountPercentRange = in.readByte() != 0x00;
+		allDiscounted = in.readByte() != 0x00;
+		priceHigh = in.readDouble();
+		price = in.readDouble();
+		priceLow = in.readDouble();
+		discountPercentLow = in.readInt();
+		discountPercent = in.readInt();
+		allOnClearance = in.readByte() != 0x00;
+		hasPriceRange = in.readByte() != 0x00;
+		discountPercentHigh = in.readInt();
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeByte((byte) (hasDiscountPercentRange ? 0x01 : 0x00));
+		dest.writeByte((byte) (allDiscounted ? 0x01 : 0x00));
+		dest.writeDouble(priceHigh);
+		dest.writeDouble(price);
+		dest.writeDouble(priceLow);
+		dest.writeInt(discountPercentLow);
+		dest.writeInt(discountPercent);
+		dest.writeByte((byte) (allOnClearance ? 0x01 : 0x00));
+		dest.writeByte((byte) (hasPriceRange ? 0x01 : 0x00));
+		dest.writeInt(discountPercentHigh);
+	}
+
+	@SuppressWarnings("unused")
+	public static final Parcelable.Creator<VariantDefinitionSummary> CREATOR = new Parcelable.Creator<VariantDefinitionSummary>() {
+		@Override
+		public VariantDefinitionSummary createFromParcel(Parcel in) {
+			return new VariantDefinitionSummary(in);
 		}
+
+		@Override
+		public VariantDefinitionSummary[] newArray(int size) {
+			return new VariantDefinitionSummary[size];
+		}
+	};
 }
