@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import ir.hosseinabbasi.trademe.R;
 import ir.hosseinabbasi.trademe.data.db.model.search.ListItem;
 import ir.hosseinabbasi.trademe.di.ActivityContext;
 import ir.hosseinabbasi.trademe.ui.base.BaseFragment;
+import ir.hosseinabbasi.trademe.ui.main.MainActivity;
 
 /**
  * Created by Dr.jacky on 2018/03/16.
@@ -31,6 +34,9 @@ public class SearchResultView extends BaseFragment implements ISearchResultView 
     @Inject
     @ActivityContext
     Context mContext;
+
+    @BindView(R.id.fragment_search_result_txtNoResult)
+    TextView mTxtNoResult;
 
     @Inject
     SearchResultPresenter<SearchResultView> mPresenter;
@@ -55,6 +61,7 @@ public class SearchResultView extends BaseFragment implements ISearchResultView 
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this, view));
         mPresenter.onAttach(this);
+        ((MainActivity)mContext).getSupportActionBar().hide();
         ArrayList<ListItem> listItems = getArguments().getParcelableArrayList("listItems");
         initViews(listItems);
         return view;
@@ -68,13 +75,16 @@ public class SearchResultView extends BaseFragment implements ISearchResultView 
     @Override
     public void onDestroyView() {
         mPresenter.onDetach();
+        ((MainActivity)mContext).getSupportActionBar().show();
         super.onDestroyView();
     }
 
     private void initViews(ArrayList<ListItem> listItems) {
-        mResultRecyclerView.setHasFixedSize(true);
-        mResultRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mAdapter = new SearchResultAdapter(mContext, listItems, this);
-        mResultRecyclerView.setAdapter(mAdapter);
+        if(listItems.size() > 0) {
+            mResultRecyclerView.setHasFixedSize(true);
+            mResultRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+            mAdapter = new SearchResultAdapter(mContext, listItems, this);
+            mResultRecyclerView.setAdapter(mAdapter);
+        } else mTxtNoResult.setVisibility(View.VISIBLE);
     }
 }
