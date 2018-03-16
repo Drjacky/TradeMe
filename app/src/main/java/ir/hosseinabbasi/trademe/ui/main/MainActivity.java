@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem search = menu.findItem(R.id.main_search);
         final SearchView searchView = (SearchView) search.getActionView();
@@ -63,8 +63,11 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                searchView.setIconified(true);
+                searchView.clearFocus();
                 mPresenter.getSearchResult(query);
-                return true;
+                (menu.findItem(R.id.main_search)).collapseActionView();
+                return false;
             }
 
             @Override
@@ -72,6 +75,7 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
                 return false;
             }
         });
+        searchView.setIconified(false);
 
         return true;
     }
