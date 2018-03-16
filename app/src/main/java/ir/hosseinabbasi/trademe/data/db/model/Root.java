@@ -25,6 +25,9 @@ public class Root extends RealmObject{
 	@SerializedName("Name")
 	private String name;
 
+	@SerializedName("Count")
+	private int count;
+
 	public void setPath(String path){
 		this.path = path;
 	}
@@ -65,15 +68,24 @@ public class Root extends RealmObject{
 		return name;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
  	public String toString(){
-		return 
-			"Root{" + 
-			"path = '" + path + '\'' + 
-			",isLeaf = '" + isLeaf + '\'' + 
-			",subcategories = '" + subcategories + '\'' + 
-			",number = '" + number + '\'' + 
-			",name = '" + name + '\'' + 
+		return
+			"Root{" +
+			"path = '" + path + '\'' +
+			",isLeaf = '" + isLeaf + '\'' +
+			",subcategories = '" + subcategories + '\'' +
+			",number = '" + number + '\'' +
+			",name = '" + name + '\'' +
+			",count = '" + count + '\'' +
 			"}";
 		}
 }

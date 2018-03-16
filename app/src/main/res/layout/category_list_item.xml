@@ -41,7 +41,7 @@
             android:layout_marginStart="8dp"
             android:text="@{subcategoriesItemModel.name}"
             app:layout_constraintBottom_toBottomOf="@+id/category_list_item_txtListingId"
-            app:layout_constraintEnd_toStartOf="@+id/category_list_item_imvArrow"
+            app:layout_constraintEnd_toStartOf="@+id/category_list_item_txtCount"
             app:layout_constraintStart_toEndOf="@+id/category_list_item_txtListingId"
             app:layout_constraintTop_toTopOf="@+id/category_list_item_txtListingId" />
 
@@ -56,6 +56,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/category_list_item_txtListingId"
             app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+        <TextView
+            android:id="@+id/category_list_item_txtCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{Integer.toString(subcategoriesItemModel.count)}"
+            app:layout_constraintBottom_toBottomOf="@+id/category_list_item_txtListingId"
+            app:layout_constraintEnd_toStartOf="@+id/category_list_item_imvArrow"
+            app:layout_constraintStart_toEndOf="@+id/category_list_item_txtTitle"
+            app:layout_constraintTop_toTopOf="@+id/category_list_item_txtListingId" />
 
 
     </android.support.constraint.ConstraintLayout>

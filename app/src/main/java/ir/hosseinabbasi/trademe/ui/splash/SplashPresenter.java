@@ -2,6 +2,9 @@ package ir.hosseinabbasi.trademe.ui.splash;
 
 import android.util.Log;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import ir.hosseinabbasi.trademe.data.DataManager;
@@ -36,7 +39,9 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V>
     public void getCategories() { //Need to figure out how to update the local category after first time.
         Root rootLocal = getDataManager().loadCategories();
         if (rootLocal == null) {
-            disposables.add(getDataManager().getCategories("0", "JSON")
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("with_counts", "true");
+            disposables.add(getDataManager().getCategories("0", "JSON", params)
                     .compose(threadTransformer.applySchedulers())
                     .subscribe(rootResult -> {
                         getDataManager().saveCategories(rootResult);

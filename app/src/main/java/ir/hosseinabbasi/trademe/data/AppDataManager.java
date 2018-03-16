@@ -2,6 +2,8 @@ package ir.hosseinabbasi.trademe.data;
 
 import android.content.Context;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -35,8 +37,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<Root> getCategories(String number, String fileFormat) {
-        return mIApiService.getCategories(number, fileFormat);
+    public Observable<Root> getCategories(String number, String fileFormat, Map<String, String> params) {
+        return mIApiService.getCategories(number, fileFormat, params);
     }
 
     @Override
