@@ -33,7 +33,7 @@ public class DetailPresenter<V extends IDetailView> extends BasePresenter<V> imp
     @Override
     public void getDetail(String listingId) {
         getBaseView().showLoading();
-        disposables.add(getDataManager().getDetail(listingId.replaceAll("-", ""), "JSON") //HTTP 401 Unauthorized! This URL doesn't work either: https://api.tmsandbox.co.nz/v1/Listings/1234567890.json
+        disposables.add(getDataManager().getDetail(listingId.replaceAll("-", ""), "JSON") //HTTP 400 error!
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(listingResult -> {
                     getBaseView().hideLoading();
