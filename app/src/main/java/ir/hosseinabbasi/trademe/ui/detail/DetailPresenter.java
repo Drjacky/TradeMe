@@ -40,6 +40,7 @@ public class DetailPresenter<V extends IDetailView> extends BasePresenter<V> imp
                     getBaseView().loadDetail(listingResult);
                 }, throwable -> {
                     getBaseView().hideLoading();
+                    getBaseView().onError(throwable.getMessage());
                     Log.wtf(TAG, throwable.getMessage() + "");
                 }));
 

@@ -42,6 +42,7 @@ public class SplashPresenter<V extends ISplashView> extends BasePresenter<V>
                         getDataManager().saveCategories(rootResult);
                         getBaseView().loadCategoryList(rootResult);
                     }, throwable -> {
+                        getBaseView().onError(throwable.getMessage());
                         Log.wtf(TAG, throwable.getMessage() + "");
                     }));
         } else getBaseView().loadCategoryList(rootLocal);
