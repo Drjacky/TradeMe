@@ -90,7 +90,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView, BaseFr
 
     @Override
     public boolean isNetworkConnected() {
-        return NetworkUtils.isNetworkConnected(getApplicationContext());
+        return NetworkUtils.Companion.isNetworkConnected(getApplicationContext());
     }
 
     @Override

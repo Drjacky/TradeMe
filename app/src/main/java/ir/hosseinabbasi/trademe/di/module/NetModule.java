@@ -32,7 +32,7 @@ public class NetModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(ApiEndPoint.ENDPOINT_TRADEME)
-                .client(NetworkUtils.getCustomRetrofitHeader().build())
+                .client(NetworkUtils.Companion.getCustomRetrofitHeader().build())
                 .build();
     }
 
