@@ -54,7 +54,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView, BaseFr
     @Override
     public void showLoading() {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this);
+        mProgressDialog = CommonUtils.Companion.showLoadingDialog(this);
     }
 
     @Override
